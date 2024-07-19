@@ -2061,6 +2061,12 @@ module.exports = {
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+var navbar = document.getElementById('navbar');
+var hamburgerBtn = document.getElementById('btn-hamburger');
+function toggleNavbar() {
+  navbar.classList.toggle('active');
+}
+hamburgerBtn.addEventListener('click', toggleNavbar);
 
 /***/ }),
 
