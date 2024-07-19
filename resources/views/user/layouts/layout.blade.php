@@ -15,7 +15,7 @@
 <body class="font-playfair">
     {{-- Header --}}
     <header class="py-4 lg:py-8">
-        <div class="container mx-auto px-4 relative">
+        <div class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-xl">
             <nav class="flex items-center justify-between">
                 <a href="#" class="text-red-600 text-3xl font-semibold text-center">FOCUS</a>
                 {{-- Nav Mobile --}}
@@ -23,7 +23,7 @@
                     <button id="btn-hamburger">
                         <i class="fa-solid fa-bars text-2xl hover:text-red-800"></i>
                     </button>
-                    <ul class="nav bg-white absolute top-9 left-0 z-10 py-4 px-4 flex flex-col gap-y-4 shadow-md w-full md:mt-4"
+                    <ul class="nav bg-white absolute top-16 md:top-14 left-0 z-10 py-4 px-4 sm:px-6 md:px-8 flex flex-col gap-y-4 shadow-md w-full md:mt-4"
                         id="navbar">
                         <li><a href="#">Politics</a></li>
                         <li><a href="#">Sports</a></li>
