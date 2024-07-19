@@ -1,0 +1,10 @@
+Reference Design:
+https://dribbble.com/shots/21286628--Buletin-News-Website
+
+Font:
+Playfair Display
+
+ <h2 class="text-3xl font-serif font-medium mt-4">Catch Up on the <span class="text-red-600">Trusted News</span>
+            <span class="text-3xl">✅</span>, Stay Ahead with <span class="text-red-600">Accurate</span> <span class="text-3xl">🎯</span> updates, and
+            Your Daily Dose of <span class="text-red-600">Insight</span> <span class="text-3xl">✨</span>
+        </h2>
