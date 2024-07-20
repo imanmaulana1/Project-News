@@ -47,40 +47,106 @@ class HomeController extends Controller
             ]
         ];
 
-        $entertainmentNews = [
+        $categories = ['Politics', 'Sports', 'Technology', 'Entertainment', 'Movie', 'Health'];
+
+        return view('user.home', compact('headline', 'latestNews', 'categories'));
+    }
+
+    public function category($category)
+    {
+        $dummyData = collect([
             [
-                'title' => "Top 10 Music Albums of the Year",
-                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
-                'category' => 'Entertainment',
-                'author' => 'Spotify',
-                'created_at' => '17 hours ago'
+                'title' => 'Political News',
+                'content' => 'Details on recent political events and decisions.',
+                'category' => 'Politics',
+                'author' => 'John Doe',
+                'created_at' => '2 hours ago'
             ],
             [
-                'title' => "Exciting New Movie Releases This Summer",
-                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
-                'category' => 'Entertainment',
-                'author' => 'Netflix',
-                'created_at' => '13 hours ago'
-            ]
-        ];
-
-        $technologyNews = [
-            [
-                'title' => "Top Gadgets to Watch Out for in 2024'",
-                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
-                'category' => 'Technology',
-                'author' => 'IDN News',
+                'title' => 'Sports Update',
+                'content' => 'Latest scores and highlights from the world of sports.',
+                'category' => 'Sports',
+                'author' => 'Jane Smith',
                 'created_at' => '3 hours ago'
             ],
             [
-                'title' => "All the rumors about Iphone 16",
-                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
+                'title' => 'Tech Innovations',
+                'content' => 'Breaking news on the latest technology advancements.',
                 'category' => 'Technology',
-                'author' => 'Mac Rumors',
+                'author' => 'TechCrunch',
+                'created_at' => '4 hours ago'
+            ],
+            [
+                'title' => 'Entertainment Buzz',
+                'content' => 'Trending news in the entertainment industry.',
+                'category' => 'Entertainment',
+                'author' => 'BuzzFeed',
+                'created_at' => '5 hours ago'
+            ],
+            [
+                'title' => 'Movie Reviews',
+                'content' => 'Latest movie reviews and box office updates.',
+                'category' => 'Movie',
+                'author' => 'Hollywood',
+                'created_at' => '6 hours ago'
+            ],
+            [
+                'title' => 'Health Tips',
+                'content' => 'Important health tips and medical news.',
+                'category' => 'Health',
+                'author' => 'WebMD',
+                'created_at' => '7 hours ago'
+            ],
+            [
+                'title' => 'Political News',
+                'content' => 'Updates on governmental policies and elections.',
+                'category' => 'Politics',
+                'author' => 'CNN',
+                'created_at' => '8 hours ago'
+            ],
+            [
+                'title' => 'Sports Update',
+                'content' => 'In-depth analysis and reports on recent sports matches.',
+                'category' => 'Sports',
+                'author' => 'ESPN',
+                'created_at' => '9 hours ago'
+            ],
+            [
+                'title' => 'Tech Innovations',
+                'content' => 'Insights on new gadgets and software releases.',
+                'category' => 'Technology',
+                'author' => 'Microsoft',
                 'created_at' => '10 hours ago'
+            ],
+            [
+                'title' => 'Entertainment Buzz',
+                'content' => 'Celebrity news and upcoming entertainment events.',
+                'category' => 'Entertainment',
+                'author' => 'Variety',
+                'created_at' => '11 hours ago'
+            ],
+            [
+                'title' => 'Movie Reviews',
+                'content' => 'Critiques and audience reactions to the latest films.',
+                'category' => 'Movie',
+                'author' => 'IMDB',
+                'created_at' => '12 hours ago'
+            ],
+            [
+                'title' => 'Health Tips',
+                'content' => 'Guidelines for maintaining good health and well-being.',
+                'category' => 'Health',
+                'author' => 'Healthline',
+                'created_at' => '13 hours ago'
             ]
-        ];
+        ]);
 
-        return view('user.home', compact('headline', 'latestNews'));
+        $categories = ['Politics', 'Sports', 'Technology', 'Entertainment', 'Movie', 'Health'];
+
+        $filteredCategory = $dummyData->filter(function ($newsItem) use ($category) {
+            return strtolower($newsItem['category']) === strtolower($category);
+        });
+
+        return view('user.category', compact('category', 'categories', 'filteredCategory'));
     }
 }

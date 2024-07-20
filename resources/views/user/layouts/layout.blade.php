@@ -17,7 +17,7 @@
     <header class="py-4 lg:py-8">
         <div class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-xl">
             <nav class="flex items-center justify-between">
-                <a href="#" class="text-red-600 text-3xl font-semibold text-center">FOCUS</a>
+                <a href="{{ route('news.index') }}" class="text-red-600 text-3xl font-semibold text-center">FOCUS</a>
                 {{-- Nav Mobile --}}
                 <div class="lg:hidden">
                     <button id="btn-hamburger">
@@ -25,21 +25,20 @@
                     </button>
                     <ul class="nav bg-white absolute top-16 md:top-14 left-0 z-10 py-4 px-4 sm:px-6 md:px-8 flex flex-col gap-y-4 shadow-md w-full md:mt-4"
                         id="navbar">
-                        <li><a href="#">Politics</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">Entertainment</a></li>
-                        <li><a href="#">Movie</a></li>
-                        <li><a href="#">Health</a></li>
+                        @foreach ($categories as $category)
+                            <li class="{{ request()->is('category/' . $category) ? 'text-red-800 font-semibold' : '' }}">
+                                <a href="{{ route('news.category', $category) }}">{{ $category }}</a>
+                            </li>
+                        @endforeach
+
                     </ul>
                 </div>
                 <ul class="hidden lg:flex lg:flex-row lg:gap-x-6">
-                    <li><a href="#">Politics</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Technology</a></li>
-                    <li><a href="#">Entertainment</a></li>
-                    <li><a href="#">Movie</a></li>
-                    <li><a href="#">Health</a></li>
+                    @foreach ($categories as $category)
+                        <li class="{{ request()->is('category/' . $category) ? 'text-red-800 font-semibold' : '' }}">
+                            <a href="{{ route('news.category', $category) }}">{{ $category }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </nav>
         </div>
@@ -49,7 +48,33 @@
         @yield('content')
     </main>
     {{-- Footer --}}
-    <footer></footer>
+    <footer>
+        <div class="container mx-auto my-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-xl">
+            <div class="flex flex-col md:flex-row md:items-start gap-4 py-8 border-t border-gray-400">
+                <div class="text-center md:text-start basis-full md:basis-1/2">
+                    <a href="{{ route('news.index') }}" class="text-red-600 text-3xl font-semibold">FOCUS</a>
+                    <p class="mt-2 text-sm text-gray-600">Catch Up on the trusted news and your daily dose of insight
+                    </p>
+                    <p class="pt-12 text-sm text-gray-400 hidden md:block">&copy; {{ date('Y') }} Focus News. All
+                        rights
+                        reserved.
+                    </p>
+                </div>
+                <nav
+                    class="text-center md:text-start pt-8 md:pt-0 border-b border-gray-400 md:border-none  basis-full md:basis-1/2">
+                    <ul class="flex flex-col flex-wrap items-center h-32 lg:flex-row gap-8">
+                        @foreach ($categories as $category)
+                            <li><a href="{{ route('news.category', $category) }}">{{ $category }}</a></li>
+                        @endforeach
+                    </ul>
+                </nav>
+                <p class="pt-12 text-sm text-center text-gray-400 md:hidden">&copy; {{ date('Y') }} Focus News. All
+                    rights
+                    reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
