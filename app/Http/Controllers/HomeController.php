@@ -47,6 +47,40 @@ class HomeController extends Controller
             ]
         ];
 
+        $entertainmentNews = [
+            [
+                'title' => "Top 10 Music Albums of the Year",
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
+                'category' => 'Entertainment',
+                'author' => 'Spotify',
+                'created_at' => '17 hours ago'
+            ],
+            [
+                'title' => "Exciting New Movie Releases This Summer",
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
+                'category' => 'Entertainment',
+                'author' => 'Netflix',
+                'created_at' => '13 hours ago'
+            ]
+        ];
+
+        $technologyNews = [
+            [
+                'title' => "Top Gadgets to Watch Out for in 2024'",
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
+                'category' => 'Technology',
+                'author' => 'IDN News',
+                'created_at' => '3 hours ago'
+            ],
+            [
+                'title' => "All the rumors about Iphone 16",
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
+                'category' => 'Technology',
+                'author' => 'Mac Rumors',
+                'created_at' => '10 hours ago'
+            ]
+        ];
+
         return view('user.home', compact('headline', 'latestNews'));
     }
 }

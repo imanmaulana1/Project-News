@@ -66,4 +66,16 @@
         </div>
 
     </section>
+
+    {{-- Newsletter Section --}}
+    <section
+        class="container mx-auto my-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-xl  text-center lg:text-start">
+        <div class="bg-gray-200 py-8 lg:py-20 rounded-lg px-8">
+            <h1 class="text-base md:text-lg lg:text-xl uppercase tracking-wide text-neutral-500 ">Get First Update</h1>
+            <h2 class="text-xl md:text-2xl lg:text-3xl font-sans font-semibold mt-4 md:max-w-lg lg:max-w-full md:mx-auto ">
+                Get the news in front line by <span class="text-red-600">subsrcribe</span> <span
+                    class="text-xl lg:text-3xl">✍️</span> our latest updates
+            </h2>
+        </div>
+    </section>
 @endsection
