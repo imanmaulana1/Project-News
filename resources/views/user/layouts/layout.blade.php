@@ -50,7 +50,7 @@
     {{-- Footer --}}
     <footer>
         <div class="container mx-auto my-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-xl">
-            <div class="flex flex-col md:flex-row md:items-start gap-4 py-8 border-t border-gray-400">
+            <div class="flex flex-col md:flex-row md:items-start lg:items-baseline gap-4 py-8 xl:py-0 border-t border-gray-400">
                 <div class="text-center md:text-start basis-full md:basis-1/2">
                     <a href="{{ route('news.index') }}" class="text-red-600 text-3xl font-semibold">FOCUS</a>
                     <p class="mt-2 text-sm text-gray-600">Catch Up on the trusted news and your daily dose of insight

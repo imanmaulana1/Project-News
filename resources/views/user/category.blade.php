@@ -1,6 +1,6 @@
 @extends('user.layouts.layout')
 
-@section('title', 'Home')
+@section('title', 'Home | ' . $category)
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <h2 class="text-3xl md:text-4xl font-bold mb-6">Category {{ $category }}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 pb-5">
             @foreach ($filteredCategory as $item)
-                <a href="#">
+                <a href="{{ route('news.show', $item['id']) }}">
                     <div class="flex flex-col gap-3">
                         <div class="bg-gray-200 rounded-lg w-full h-64 grid place-items-center">
                             <i class="fa-regular fa-image text-5xl md:text-6xl text-gray-500" alt="Image placeholder"></i>

@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('news.index');
-
 Route::get('/category/{category}', [HomeController::class, 'category'])->name('news.category');
+Route::get('/news/{id}', [HomeController::class, 'show'])->name('news.show');

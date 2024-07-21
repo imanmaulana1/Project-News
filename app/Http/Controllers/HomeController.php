@@ -9,6 +9,7 @@ class HomeController extends Controller
     public function index()
     {
         $headline = [
+            'id' => 99,
             'title' => "Where To Watch 'John Wick: Chapter 4'",
             'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima at ex, asperiores ratione dignissimos. Tenetur consectetur assumenda quo impedit ut dolores voluptate illum voluptas...',
             'category' => 'Movies',
@@ -18,27 +19,31 @@ class HomeController extends Controller
 
         $latestNews = [
             [
+                'id' => 13,
                 'title' => "'He deserves a lot more' Verstappen backs Alonso",
                 'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
-                'category' => 'Sport',
+                'category' => 'Sports',
                 'author' => 'Formula 1',
                 'created_at' => '3 hours ago'
             ],
             [
+                'id' => 14,
                 'title' => 'Liverpool hammer Leeds for first win in five games',
                 'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
-                'category' => 'Sport',
+                'category' => 'Sports',
                 'author' => 'BBC',
                 'created_at' => '12 hours ago'
             ],
             [
-                'title' => 'Lates News 3',
+                'id' => 15,
+                'title' => 'Latest News 3',
                 'content' => 'Content of the latest news 3',
                 'category' => 'Entertainment',
                 'author' => 'CNN',
                 'created_at' => '2 hours ago'
             ],
             [
+                'id' => 16,
                 'title' => 'Latest News 4',
                 'content' => 'Content of the latest news 4',
                 'category' => 'Technology',
@@ -47,7 +52,8 @@ class HomeController extends Controller
             ]
         ];
 
-        $categories = ['Politics', 'Sports', 'Technology', 'Entertainment', 'Movie', 'Health'];
+
+        $categories = ['Politics', 'Sports', 'Technology', 'Entertainment', 'Movies', 'Health'];
 
         return view('user.home', compact('headline', 'latestNews', 'categories'));
     }
@@ -56,6 +62,7 @@ class HomeController extends Controller
     {
         $dummyData = collect([
             [
+                'id' => 1,
                 'title' => 'Political News',
                 'content' => 'Details on recent political events and decisions.',
                 'category' => 'Politics',
@@ -63,6 +70,7 @@ class HomeController extends Controller
                 'created_at' => '2 hours ago'
             ],
             [
+                'id' => 2,
                 'title' => 'Sports Update',
                 'content' => 'Latest scores and highlights from the world of sports.',
                 'category' => 'Sports',
@@ -70,6 +78,7 @@ class HomeController extends Controller
                 'created_at' => '3 hours ago'
             ],
             [
+                'id' => 3,
                 'title' => 'Tech Innovations',
                 'content' => 'Breaking news on the latest technology advancements.',
                 'category' => 'Technology',
@@ -77,6 +86,7 @@ class HomeController extends Controller
                 'created_at' => '4 hours ago'
             ],
             [
+                'id' => 4,
                 'title' => 'Entertainment Buzz',
                 'content' => 'Trending news in the entertainment industry.',
                 'category' => 'Entertainment',
@@ -84,13 +94,15 @@ class HomeController extends Controller
                 'created_at' => '5 hours ago'
             ],
             [
+                'id' => 5,
                 'title' => 'Movie Reviews',
                 'content' => 'Latest movie reviews and box office updates.',
-                'category' => 'Movie',
+                'category' => 'Movies',
                 'author' => 'Hollywood',
                 'created_at' => '6 hours ago'
             ],
             [
+                'id' => 6,
                 'title' => 'Health Tips',
                 'content' => 'Important health tips and medical news.',
                 'category' => 'Health',
@@ -98,6 +110,7 @@ class HomeController extends Controller
                 'created_at' => '7 hours ago'
             ],
             [
+                'id' => 7,
                 'title' => 'Political News',
                 'content' => 'Updates on governmental policies and elections.',
                 'category' => 'Politics',
@@ -105,6 +118,7 @@ class HomeController extends Controller
                 'created_at' => '8 hours ago'
             ],
             [
+                'id' => 8,
                 'title' => 'Sports Update',
                 'content' => 'In-depth analysis and reports on recent sports matches.',
                 'category' => 'Sports',
@@ -112,6 +126,7 @@ class HomeController extends Controller
                 'created_at' => '9 hours ago'
             ],
             [
+                'id' => 9,
                 'title' => 'Tech Innovations',
                 'content' => 'Insights on new gadgets and software releases.',
                 'category' => 'Technology',
@@ -119,6 +134,7 @@ class HomeController extends Controller
                 'created_at' => '10 hours ago'
             ],
             [
+                'id' => 10,
                 'title' => 'Entertainment Buzz',
                 'content' => 'Celebrity news and upcoming entertainment events.',
                 'category' => 'Entertainment',
@@ -126,27 +142,247 @@ class HomeController extends Controller
                 'created_at' => '11 hours ago'
             ],
             [
+                'id' => 11,
                 'title' => 'Movie Reviews',
                 'content' => 'Critiques and audience reactions to the latest films.',
-                'category' => 'Movie',
+                'category' => 'Movies',
                 'author' => 'IMDB',
                 'created_at' => '12 hours ago'
             ],
             [
+                'id' => 12,
                 'title' => 'Health Tips',
                 'content' => 'Guidelines for maintaining good health and well-being.',
                 'category' => 'Health',
                 'author' => 'Healthline',
                 'created_at' => '13 hours ago'
+            ],
+            [
+                'id' => 13,
+                'title' => "'He deserves a lot more' Verstappen backs Alonso",
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
+                'category' => 'Sports',
+                'author' => 'Formula 1',
+                'created_at' => '3 hours ago'
+            ],
+            [
+                'id' => 14,
+                'title' => 'Liverpool hammer Leeds for first win in five games',
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
+                'category' => 'Sports',
+                'author' => 'BBC',
+                'created_at' => '12 hours ago'
+            ],
+            [
+                'id' => 15,
+                'title' => 'Latest News 3',
+                'content' => 'Content of the latest news 3',
+                'category' => 'Entertainment',
+                'author' => 'CNN',
+                'created_at' => '2 hours ago'
+            ],
+            [
+                'id' => 16,
+                'title' => 'Latest News 4',
+                'content' => 'Content of the latest news 4',
+                'category' => 'Technology',
+                'author' => 'Microsoft',
+                'created_at' => '5 hours ago'
             ]
         ]);
 
-        $categories = ['Politics', 'Sports', 'Technology', 'Entertainment', 'Movie', 'Health'];
+
+        $categories = ['Politics', 'Sports', 'Technology', 'Entertainment', 'Movies', 'Health'];
 
         $filteredCategory = $dummyData->filter(function ($newsItem) use ($category) {
             return strtolower($newsItem['category']) === strtolower($category);
         });
 
         return view('user.category', compact('category', 'categories', 'filteredCategory'));
+    }
+
+    public function show($id)
+    {
+        $dummyData = collect([
+            [
+                'id' => 1,
+                'title' => 'Political News',
+                'content' => 'Details on recent political events and decisions.',
+                'category' => 'Politics',
+                'author' => 'John Doe',
+                'created_at' => '2 hours ago'
+            ],
+            [
+                'id' => 2,
+                'title' => 'Sports Update',
+                'content' => 'Latest scores and highlights from the world of sports.',
+                'category' => 'Sports',
+                'author' => 'Jane Smith',
+                'created_at' => '3 hours ago'
+            ],
+            [
+                'id' => 3,
+                'title' => 'Tech Innovations',
+                'content' => 'Breaking news on the latest technology advancements.',
+                'category' => 'Technology',
+                'author' => 'TechCrunch',
+                'created_at' => '4 hours ago'
+            ],
+            [
+                'id' => 4,
+                'title' => 'Entertainment Buzz',
+                'content' => 'Trending news in the entertainment industry.',
+                'category' => 'Entertainment',
+                'author' => 'BuzzFeed',
+                'created_at' => '5 hours ago'
+            ],
+            [
+                'id' => 5,
+                'title' => 'Movie Reviews',
+                'content' => 'Latest movie reviews and box office updates.',
+                'category' => 'Movies',
+                'author' => 'Hollywood',
+                'created_at' => '6 hours ago'
+            ],
+            [
+                'id' => 6,
+                'title' => 'Health Tips',
+                'content' => 'Important health tips and medical news.',
+                'category' => 'Health',
+                'author' => 'WebMD',
+                'created_at' => '7 hours ago'
+            ],
+            [
+                'id' => 7,
+                'title' => 'Political News',
+                'content' => 'Updates on governmental policies and elections.',
+                'category' => 'Politics',
+                'author' => 'CNN',
+                'created_at' => '8 hours ago'
+            ],
+            [
+                'id' => 8,
+                'title' => 'Sports Update',
+                'content' => 'In-depth analysis and reports on recent sports matches.',
+                'category' => 'Sports',
+                'author' => 'ESPN',
+                'created_at' => '9 hours ago'
+            ],
+            [
+                'id' => 9,
+                'title' => 'Tech Innovations',
+                'content' => 'Insights on new gadgets and software releases.',
+                'category' => 'Technology',
+                'author' => 'Microsoft',
+                'created_at' => '10 hours ago'
+            ],
+            [
+                'id' => 10,
+                'title' => 'Entertainment Buzz',
+                'content' => 'Celebrity news and upcoming entertainment events.',
+                'category' => 'Entertainment',
+                'author' => 'Variety',
+                'created_at' => '11 hours ago'
+            ],
+            [
+                'id' => 11,
+                'title' => 'Movie Reviews',
+                'content' => 'Critiques and audience reactions to the latest films.',
+                'category' => 'Movies',
+                'author' => 'IMDB',
+                'created_at' => '12 hours ago'
+            ],
+            [
+                'id' => 12,
+                'title' => 'Health Tips',
+                'content' => 'Guidelines for maintaining good health and well-being.',
+                'category' => 'Health',
+                'author' => 'Healthline',
+                'created_at' => '13 hours ago'
+            ],
+            [
+                'id' => 13,
+                'title' => "'He deserves a lot more' Verstappen backs Alonso",
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
+                'category' => 'Sports',
+                'author' => 'Formula 1',
+                'created_at' => '3 hours ago'
+            ],
+            [
+                'id' => 14,
+                'title' => 'Liverpool hammer Leeds for first win in five games',
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
+                'category' => 'Sports',
+                'author' => 'BBC',
+                'created_at' => '12 hours ago'
+            ],
+            [
+                'id' => 15,
+                'title' => 'Latest News 3',
+                'content' => 'Content of the latest news 3',
+                'category' => 'Entertainment',
+                'author' => 'CNN',
+                'created_at' => '2 hours ago'
+            ],
+            [
+                'id' => 16,
+                'title' => 'Latest News 4',
+                'content' => 'Content of the latest news 4',
+                'category' => 'Technology',
+                'author' => 'Microsoft',
+                'created_at' => '5 hours ago'
+            ],
+            [
+                'id' => 99,
+                'title' => "Where To Watch 'John Wick: Chapter 4'",
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima at ex, asperiores ratione dignissimos. Tenetur consectetur assumenda quo impedit ut dolores voluptate illum voluptas...',
+                'category' => 'Movies',
+                'author' => 'Netflix',
+                'created_at' => '12 minutes ago'
+            ]
+        ]);
+
+        $news = $dummyData->firstWhere('id', $id);
+
+        $latestNews = [
+            [
+                'id' => 13,
+                'title' => "'He deserves a lot more' Verstappen backs Alonso",
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
+                'category' => 'Sports',
+                'author' => 'Formula 1',
+                'created_at' => '3 hours ago'
+            ],
+            [
+                'id' => 14,
+                'title' => 'Liverpool hammer Leeds for first win in five games',
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum minima...',
+                'category' => 'Sports',
+                'author' => 'BBC',
+                'created_at' => '12 hours ago'
+            ],
+            [
+                'id' => 15,
+                'title' => 'Latest News 3',
+                'content' => 'Content of the latest news 3',
+                'category' => 'Entertainment',
+                'author' => 'CNN',
+                'created_at' => '2 hours ago'
+            ],
+            [
+                'id' => 16,
+                'title' => 'Latest News 4',
+                'content' => 'Content of the latest news 4',
+                'category' => 'Technology',
+                'author' => 'Microsoft',
+                'created_at' => '5 hours ago'
+            ]
+        ];
+
+        $latestNews = array_slice($latestNews, 0, 2);
+
+        $categories = ['Politics', 'Sports', 'Technology', 'Entertainment', 'Movies', 'Health'];
+
+        return view('user.detail', compact('news', 'latestNews', 'categories'));
     }
 }

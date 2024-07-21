@@ -21,7 +21,7 @@
     {{-- Headline News --}}
     <section class="container mx-auto mt-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-xl ">
         <article class="relative grid grid-cols-1  md:grid-cols-2 gap-4 md:gap-x-8 xl:gap-x-12 lg:items-center">
-            <a href="#" class="absolute inset-0 z-10"></a>
+            <a href="{{ route('news.show', $headline['id']) }}" class="absolute inset-0 z-10"></a>
             <div class="bg-gray-200 w-full h-72 lg:h-80 xl:h-96 rounded-lg grid place-items-center">
                 <i class="fa-regular fa-image text-5xl md:text-6xl text-gray-500"></i>
             </div>
@@ -46,7 +46,7 @@
         <h2 class="text-3xl md:text-4xl font-bold mb-6">Latest News</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4  gap-8 pb-5">
             @foreach ($latestNews as $news)
-                <a href="#">
+                <a href="{{ route('news.show', $news['id']) }}">
                     <div class="flex flex-col gap-3">
                         <div class="bg-gray-200 rounded-lg w-full h-64 grid place-items-center">
                             <i class="fa-regular fa-image text-5xl md:text-6xl text-gray-500" alt="Image placeholder"></i>
