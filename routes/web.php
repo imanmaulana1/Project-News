@@ -21,4 +21,7 @@ Route::get('/news/{id}', [HomeController::class, 'show'])->name('news.show');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/news', [AdminController::class, 'manageNews'])->name('news');
+    Route::get('/categories', [AdminController::class, 'manageCategories'])->name('categories');
+    Route::get('/settings', [AdminController::class, 'settings'])->name('settings');
 });

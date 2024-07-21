@@ -20,32 +20,40 @@
                 </div>
                 <ul class="flex-1 px-3 text-lg">
                     <li
-                        class="flex items-center py-2 px-3 my-1 rounded-md cursor-pointer hover:bg-gray-100  text-gray-500">
-                        <span class="material-symbols-outlined">
-                            dashboard
-                        </span>
-                        <span class="w-52 ml-3">Dashboard</span>
+                        class="py-2 px-3 my-1 rounded-md cursor-pointer {{ request()->is('admin') ? 'bg-gray-100 text-gray-700' : '' }} hover:bg-gray-100  text-gray-500">
+                        <a href="{{ route('admin.dashboard') }}" class="flex items-center">
+                            <span class="material-symbols-outlined">
+                                dashboard
+                            </span>
+                            <span class="w-52 ml-3">Dashboard</span>
+                        </a>
                     </li>
                     <li
-                        class="flex items-center py-2 px-3 my-1 rounded-md cursor-pointer bg-gray-100 text-gray-500">
-                        <span class="material-symbols-outlined">
-                            data_table
-                        </span>
-                        <span class="w-52 ml-3">Manage News</span>
+                        class="py-2 px-3 my-1 rounded-md cursor-pointer {{ request()->is('admin/news') ? 'bg-gray-100 text-gray-700' : '' }} hover:bg-gray-100 text-gray-500">
+                        <a href="{{ route('admin.news') }}" class="flex items-center">
+                            <span class="material-symbols-outlined">
+                                data_table
+                            </span>
+                            <span class="w-52 ml-3">Manage News</span>
+                        </a>
                     </li>
                     <li
-                        class="flex items-center py-2 px-3 my-1 rounded-md cursor-pointer hover:bg-gray-100 text-gray-500">
-                        <span class="material-symbols-outlined">
-                            menu
-                        </span>
-                        <span class="w-52 ml-3">Manage Categories</span>
+                        class="py-2 px-3 my-1 rounded-md cursor-pointer {{ request()->is('admin/categories') ? 'bg-gray-100 text-gray-700' : '' }} hover:bg-gray-100 text-gray-500">
+                        <a href="{{ route('admin.categories') }}" class="flex items-center">
+                            <span class="material-symbols-outlined">
+                                menu
+                            </span>
+                            <span class="w-52 ml-3">Manage Categories</span>
+                        </a>
                     </li>
                     <li
-                        class="flex items-center py-2 px-3 my-1 rounded-md cursor-pointer hover:bg-gray-100 text-gray-500">
-                        <span class="material-symbols-outlined">
-                            settings
-                        </span>
-                        <span class="w-52 ml-3">Settings</span>
+                        class="py-2 px-3 my-1 rounded-md cursor-pointer {{ request()->is('admin/settings') ? 'bg-gray-100 text-gray-700' : '' }} hover:bg-gray-100 text-gray-500">
+                        <a href="{{ route('admin.settings') }}" class="flex items-center">
+                            <span class="material-symbols-outlined">
+                                settings
+                            </span>
+                            <span class="w-52 ml-3">Settings</span>
+                        </a>
                     </li>
                 </ul>
 
@@ -67,9 +75,20 @@
             </nav>
 
         </aside>
-        <div class="p-4">
+        <div class="relative container mx-auto px-4 h-screen">
+            <header class="py-8">
+                @yield('header-title')
+            </header>
             @yield('content')
+            <footer class="absolute bottom-0 right-0 left-0 py-8">
+                <p class="text-sm text-center text-gray-400">&copy; {{ date('Y') }} Focus News. All
+                    rights
+                    reserved.
+                </p>
+            </footer>
         </div>
+
+    </div>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
