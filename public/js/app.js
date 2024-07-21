@@ -2066,7 +2066,9 @@ var hamburgerBtn = document.getElementById('btn-hamburger');
 function toggleNavbar() {
   navbar.classList.toggle('active');
 }
-hamburgerBtn.addEventListener('click', toggleNavbar);
+if (hamburgerBtn) {
+  hamburgerBtn.addEventListener('click', toggleNavbar);
+}
 
 /***/ }),
 

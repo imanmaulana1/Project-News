@@ -4,7 +4,7 @@
 
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
-/* transition navbar */
+/* transition navbar mobile device */
 .nav {
   transform: translateX(-100%);
   opacity: 0;
