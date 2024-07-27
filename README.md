@@ -17,8 +17,9 @@ Clone repository ini ke direktori lokal Anda:
 
 ```bash
 
-git clone https://github.com/imanmaulana1/Project-News.git
-cd Project-News
+git clone https://github.com/imanmaulana1/project-news.git
+
+cd project-news
 
 ```
 
