@@ -17,9 +17,8 @@ Clone repository ini ke direktori lokal Anda:
 
 ```bash
 
-git clone https://github.com/arislaode/news-app.git
-
-cd news-app
+git clone https://github.com/imanmaulana1/Project-News.git
+cd Project-News
 
 ```
 
@@ -70,7 +69,7 @@ php artisan storage:link
 menjalankan semua migrasi awal project laravel:
 
 ```bash
-php artisan migrate
+php artisan migrate --seed
 
 ```
 

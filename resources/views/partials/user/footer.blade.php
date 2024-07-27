@@ -1,25 +1,34 @@
-<footer class="w-full shadow m-2 mt-auto">
-    <div class="w-full max-w-screen-xl mx-auto p-2 md:py-4">
-        <div class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0 md:space-x-2 rtl:space-x-reverse">
-            <div class="flex items-center space-x-2 rtl:space-x-reverse">
-                <a href="{{ url('/') }}" class="flex items-center space-x-2 rtl:space-x-reverse">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">News Talenthub</span>
-                </a>
+<footer>
+    <div class="container mx-auto mt-20 pb-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-xl">
+        <div
+            class="flex flex-col md:flex-row md:justify-between md:items-start lg:items-baseline gap-4 border-t pt-10 xl:pt-0 border-gray-400">
+            <div class="text-center md:text-start basis-full md:basis-auto">
+                <a href="{{ url('/') }}" class="text-red-600 text-3xl font-semibold">FOCUS</a>
+                <p class="mt-2 text-sm text-gray-600">Catch Up on the trusted news and your daily dose of insight
+                </p>
+                <p class="pt-12 text-sm text-gray-400 hidden md:block">&copy; {{ date('Y') }} Focus News. All
+                    rights
+                    reserved.
+                </p>
             </div>
-            <ul class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2 md:space-x-4 rtl:space-x-reverse text-xs font-medium text-gray-500 dark:text-gray-400">
-                <li>
-                    <a href="#" class="hover:underline">About</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline">Privacy Policy</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline">Contact</a>
-                </li>
-            </ul>
+            <nav
+                class="text-center md:text-start pt-8 md:pt-0 border-b border-gray-400 md:border-none  basis-full md:basis-auto">
+                <ul class="flex flex-col flex-wrap items-center h-32 lg:flex-row gap-8">
+                    <li>
+                        <a href="#" class="hover:underline">About</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+            <p class="pt-4 text-sm text-center text-gray-400 md:hidden">&copy; {{ date('Y') }} Focus News. All
+                rights
+                reserved.
+            </p>
         </div>
-        <hr class="my-4 border-gray-200 dark:border-gray-700" />
-        <span class="block text-xs text-gray-500 text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline">News Talenthub</a>. All Rights Reserved.</span>
     </div>
 </footer>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Region;
 use App\Models\News;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
@@ -26,13 +27,13 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'body' => 'required',
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'region_id' => 'required|exists:regions,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image_caption' => 'required',
-            'date' => 'required',
+            'image_caption' => 'nullable|string|max:255',
+            'date' => 'required|date',
         ]);
 
         $imagePath = $request->file('image')->store('news', 'public');
@@ -42,6 +43,7 @@ class NewsController extends Controller
             'body' => $request->body,
             'category_id' => $request->category_id,
             'region_id' => $request->region_id,
+            'user_id' => Auth::id(), // Menyimpan ID pengguna yang sedang login
             'image_url' => $imagePath,
             'image_caption' => $request->image_caption,
             'date' => $request->date,
@@ -84,6 +86,7 @@ class NewsController extends Controller
             'body' => $request->body,
             'category_id' => $request->category_id,
             'region_id' => $request->region_id,
+            'user_id' => Auth::id(),
             'image_caption' => $request->image_caption,
             'date' => $request->date,
         ]);

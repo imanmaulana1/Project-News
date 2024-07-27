@@ -1,152 +1,101 @@
 @extends('user.layout')
 
 @section('content')
-    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Start of new carousel -->
-        <div id="default-carousel" class="relative w-full mb-8 z-0" data-carousel="slide" data-carousel-interval="6000">
-            <!-- Carousel wrapper -->
-            <div class="relative h-64 overflow-hidden rounded-lg md:h-80 lg:h-96">
-                @foreach ($news->take(5) as $index => $newsItem)
-                    <div class="{{ $index === 0 ? '' : 'hidden' }} duration-700 ease-in-out" data-carousel-item>
-                        <img src="{{ asset('storage/' . $newsItem->image_url) }}" class="absolute block w-full h-full object-cover" alt="{{ $newsItem['title'] }}">
-                        <div class="absolute bottom-0 left-0 bg-black bg-opacity-50 w-full p-4">
-                            <h2 class="text-white text-lg md:text-xl lg:text-2xl font-bold">{{ $newsItem['title'] }}</h2>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <!-- Slider indicators -->
-            <div class="absolute z-30 flex -translate-x-1/2 bottom-4 left-1/2 space-x-3 rtl:space-x-reverse">
-                @foreach ($news->take(5) as $index => $newsItem)
-                    <button type="button" class="w-2.5 h-2.5 rounded-full {{ $index === 0 ? 'bg-white' : 'bg-gray-300' }}" aria-current="{{ $index === 0 ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}" data-carousel-slide-to="{{ $index }}"></button>
-                @endforeach
-            </div>
-            <!-- Slider controls -->
-            <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-3 h-3 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                    </svg>
-                    <span class="sr-only">Previous</span>
-                </span>
-            </button>
-            <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-3 h-3 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                    </svg>
-                    <span class="sr-only">Next</span>
-                </span>
-            </button>
+    {{-- Hero Section --}}
+    <section class="container mx-auto  px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-xl  text-center">
+        <div class="bg-gray-100 py-8 rounded-lg px-8">
+            <h1 class="text-base md:text-lg lg:text-xl uppercase tracking-wide text-neutral-500 ">Welcome to Focus</h1>
+            <h2 class="text-xl md:text-2xl lg:text-3xl font-sans font-semibold mt-4 md:max-w-lg lg:max-w-3xl md:mx-auto ">
+                Catch Up on the
+                <span class="text-red-600">Trusted News</span>
+                <span class="text-xl lg:text-3xl">✅</span>, Stay Ahead with <span class="text-red-600">Accurate</span> <span
+                    class="text-xl lg:text-3xl">🎯</span> updates, and
+                Your Daily Dose of <span class="text-red-600">Insight</span> <span class="text-xl lg:text-3xl">✨</span>
+            </h2>
         </div>
-        <!-- End of new carousel -->
+    </section>
 
-        <h1 class="text-2xl font-bold mb-4">Berita Terpopuler</h1>
-        <div id="news-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach ($paginatedNews as $newsItem)
-                <a href="{{ route('news.detail', $newsItem['id']) }}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform hover:scale-105">
-                    <img class="object-cover w-full h-40 rounded-t-lg" src="{{ asset('storage/' . $newsItem->image_url) }}" alt="{{ $newsItem['title'] }}">
-                    <div class="flex flex-col justify-between p-4 leading-normal text-center">
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">{{ \Carbon\Carbon::parse($newsItem['date'])->format('F j, Y') }} - {{ $newsItem->category->name }}</p>
-                        <h5 class="mb-1 text-lg font-semibold tracking-tight text-gray-900 dark:text-white">{{ $newsItem['title'] }}</h5>
+    {{-- Headline News --}}
+    <section class="container mx-auto mt-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-xl ">
+        @if ($news)
+            <article class="relative grid grid-cols-1  md:grid-cols-2 gap-4 md:gap-x-8 xl:gap-x-12">
+                <a href="{{ route('news.detail', $news->id) }}" class="absolute inset-0 z-10"></a>
+                <img src="{{ asset('storage/' . $news->image_url) }}" alt="{{ $news['title'] }}"
+                    class="bg-gray-200 w-full h-72 lg:h-96 rounded-lg">
+                </img>
+                <div class="flex flex-col justify-between py-4 gap-8 lg:gap-0">
+                    <div class="flex flex-col gap-3 lg:gap-4 xl:gap-6">
+                        <header class="flex items-center gap-2">
+                            <img src="{{ Storage::url($news->user->profile_photo) }}" class="w-5 h-5 rounded-full"></img>
+                            <h3 class="text-gray-600 text-sm font-medium">{{ $news->user->name }}</h3>
+                            <span class="text-gray-500 text-sm">|</span>
+                            <p class="text-gray-600 text-sm font-medium">
+                                {{ \Carbon\Carbon::parse($news['date'])->format('F j, Y') }}</p>
+                        </header>
+                        <h2 class="text-2xl lg:text-4xl xl:text-5xl font-bold">{{ strlen($news->title) > 60 ? substr($news->title, 0, 60) . '...' : $news->title }}</h2>
+                        <p class="text-gray-700 text-sm md:text-base">
+                            {{ strlen($news->body) > 200 ? substr($news->body, 0, 200) . '...' : $news->body }}</p>
+                    </div>
+                    <footer>
+                        <p class="text-red-500 text-sm lg:text-base font-medium font-sans">{{ $news->category->name }}</p>
+                    </footer>
+                </div>
+
+            </article>
+        @else
+            <article class="relative grid grid-cols-1  md:grid-cols-2 gap-4 md:gap-x-8 xl:gap-x-12 lg:items-center">
+                <div class="bg-gray-200 w-full h-72 lg:h-80 rounded-lg grid place-items-center">
+                    <span class="material-symbols-outlined text-5xl md:text-6xl text-gray-500">
+                        visibility
+                    </span>
+                </div>
+                <div class="flex flex-col gap-3 lg:gap-4 xl:gap-6">
+                    <header class="flex items-center gap-2">
+                    </header>
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">Headline News</h2>
+                </div>
+            </article>
+        @endif
+
+    </section>
+
+    {{-- Latest News --}}
+    <section class="container mx-auto mt-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-xl">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Latest News</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4  gap-8 pb-5">
+            @foreach ($popularNews as $news)
+                <a href="{{ route('news.detail', $news->id) }}">
+                    <div class="flex flex-col gap-3">
+                        <img src="{{ asset('storage/' . $news->image_url) }}" alt="{{ $news['title'] }}"
+                            class="bg-gray-200 w-full h-60 rounded-lg object-cover object-center">
+                        </img>
+                        <div class="flex items-center gap-2 text-sm md:text-base text-gray-500 font-sans">
+                            <img src="{{ Storage::url($news->user->profile_photo) }}" class="w-5 h-5 rounded-full"></img>
+                            <h3 class="text-gray-600 text-sm font-playfair">{{ $news->user->name }}</h3>
+                            <span class="text-gray-500 text-sm font-playfair">|</span>
+                            <p class="text-gray-600 text-sm font-playfair">
+                                {{ \Carbon\Carbon::parse($news['date'])->format('F j, Y') }}</p>
+                        </div>
+                        <h2 class="text-xl font-bold"> {{ strlen($news->title) > 50 ? substr($news->title, 0, 50) . '...' : $news->title }}</h2>
+                        <p class="text-gray-700 text-sm md:text-base">
+                            {{ strlen($news->body) > 60 ? substr($news->body, 0, 60) . '...' : $news->body }}
+                        </p>
+                        <p class="text-red-500 text-sm md:text-base font-medium font-sans">{{ $news->category->name }}</p>
                     </div>
                 </a>
             @endforeach
         </div>
-        <div id="pagination" class="mt-8">
-            {{ $paginatedNews->links('vendor.pagination.custom') }}
-        </div>
-    </div>
+    </section>
 
-    <!-- Start of tabs -->
-    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
-            <li class="me-2" role="presentation">
-                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="editor-choice-tab" data-tabs-target="#editor-choice" type="button" role="tab" aria-controls="editor-choice" aria-selected="true">Feature</button>
-            </li>
-            <li class="me-2" role="presentation">
-                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="komunitas-tab" data-tabs-target="#komunitas" type="button" role="tab" aria-controls="komunitas" aria-selected="false">Komunitas</button>
-            </li>
-            <li class="me-2" role="presentation">
-                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="opini-tab" data-tabs-target="#opini" type="button" role="tab" aria-controls="opini" aria-selected="false">Opini</button>
-            </li>
-        </ul>
-    </div>
-    <div id="default-tab-content">
-        <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="editor-choice" role="tabpanel" aria-labelledby="editor-choice-tab">
-            @if ($editorChoiceMain)
-                <div class="mb-4">
-                    {{-- <img src="{{ asset('storage/' . $editorChoiceMain->image_url) }}" alt="{{ $editorChoiceMain->title }}" class="w-full h-auto rounded-lg mb-4"> --}}
-                    <h2 class="text-xl font-bold">{{ $editorChoiceMain->title }}</h2>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ \Carbon\Carbon::parse($editorChoiceMain->date)->format('F j, Y') }}</p>
-                </div>
-            @else
-                <div class="mb-4">
-                    <h2 class="text-xl font-bold">Belum ada tulisan feature</h2>
-                </div>
-            @endif
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                @foreach ($editorChoiceNews as $newsItem)
-                    <a href="{{ route('news.detail', $newsItem->id) }}" class="flex items-center space-x-4">
-                        <img src="{{ asset('storage/' . $newsItem->image_url) }}" alt="{{ $newsItem->title }}" class="w-16 h-16 rounded-lg">
-                        <div>
-                            <h3 class="text-md font-semibold">{{ $newsItem->title }}</h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ \Carbon\Carbon::parse($newsItem->date)->format('F j, Y') }}</p>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
+    {{-- Newsletter Section --}}
+    <section
+        class="container mx-auto my-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-xl  text-center lg:text-start">
+        <div class="bg-gray-200 py-8 lg:py-20 rounded-lg px-8">
+            <h1 class="text-base md:text-lg lg:text-xl uppercase tracking-wide text-neutral-500 ">Get First Update</h1>
+            <h2 class="text-xl md:text-2xl lg:text-3xl font-sans font-semibold mt-4 md:max-w-lg lg:max-w-full md:mx-auto ">
+                Get the news in front line by <span class="text-red-600">subsrcribe</span> <span
+                    class="text-xl lg:text-3xl">✍️</span> our latest updates
+            </h2>
         </div>
-        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="komunitas" role="tabpanel" aria-labelledby="komunitas-tab">
-            @if ($komunitasMain)
-                <div class="mb-4">
-                    {{-- <img src="{{ asset('storage/' . $komunitasMain->image_url) }}" alt="{{ $komunitasMain->title }}" class="w-full h-auto rounded-lg mb-4"> --}}
-                    <h2 class="text-xl font-bold">{{ $komunitasMain->title }}</h2>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ \Carbon\Carbon::parse($komunitasMain->date)->format('F j, Y') }}</p>
-                </div>
-            @else
-                <div class="mb-4">
-                    <h2 class="text-xl font-bold">Belum ada tulisan komunitas</h2>
-                </div>
-            @endif
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                @foreach ($komunitasNews as $newsItem)
-                    <a href="{{ route('news.detail', $newsItem->id) }}" class="flex items-center space-x-4">
-                        <img src="{{ asset('storage/' . $newsItem->image_url) }}" alt="{{ $newsItem->title }}" class="w-16 h-16 rounded-lg">
-                        <div>
-                            <h3 class="text-md font-semibold">{{ $newsItem->title }}</h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ \Carbon\Carbon::parse($newsItem->date)->format('F j, Y') }}</p>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-        </div>
-        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="opini" role="tabpanel" aria-labelledby="opini-tab">
-            @if ($opiniMain)
-                <div class="mb-4">
-                    <!-- Gambar utama dari opini dihilangkan -->
-                    {{-- <img src="{{ asset('storage/' . $opiniMain->image_url) }}" alt="{{ $opiniMain->title }}" class="w-full h-auto rounded-lg mb-4"> --}}
-                    <h2 class="text-xl font-bold">{{ $opiniMain->title }}</h2>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ \Carbon\Carbon::parse($opiniMain->date)->format('F j, Y') }}</p>
-                </div>
-            @else
-                <div class="mb-4">
-                    <h2 class="text-xl font-bold">Belum ada tulisan opini</h2>
-                </div>
-            @endif
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                @foreach ($opiniNews as $newsItem)
-                    <a href="{{ route('news.detail', $newsItem->id) }}" class="flex items-center space-x-4">
-                        <img src="{{ asset('storage/' . $newsItem->image_url) }}" alt="{{ $newsItem->title }}" class="w-16 h-16 rounded-lg">
-                        <div>
-                            <h3 class="text-md font-semibold">{{ $newsItem->title }}</h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ \Carbon\Carbon::parse($newsItem->date)->format('F j, Y') }}</p>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-        </div>
-    </div>
-
-    <!-- End of tabs -->
+    </section>
 @endsection

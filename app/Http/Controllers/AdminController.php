@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -43,7 +44,8 @@ class AdminController extends Controller
 
     public function settings()
     {
-        // Logic untuk mengambil data pengaturan
-        return view('admin.settings');
+        $user = Auth::user();
+
+        return view('admin.settings', compact('user'));
     }
 }

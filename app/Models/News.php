@@ -18,7 +18,13 @@ class News extends Model
         'image_caption',
         'date',
         'views',
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function category()
     {

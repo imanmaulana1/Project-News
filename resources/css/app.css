@@ -1,5 +1,16 @@
-@import 'swiper/swiper-bundle.css';
+@import "swiper/swiper-bundle.css";
 @import "flowbite/dist/flowbite.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.nav.active {
+    transform: translateX(0);
+    opacity: 1;
+}
